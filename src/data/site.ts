@@ -270,37 +270,33 @@ export const EDUCATION = [
 ];
 
 /* Keywords, not sentences: recruiters and ATS search this table for tool
-   and method names, so each item is the term someone would type. Ordered
-   product development → design → test → software → statistics, so it reads
-   as hardware breadth first. */
+   names, so each item is the term someone would type. Ordered product →
+   CAD → electronics → statistics → coding → AI, so it reads as hardware
+   breadth first. Only tools she can talk about for five minutes. */
 export const SKILLS = [
   {
     area: 'Product development',
-    items: ['NPI (EVT, DVT, PVT, MP)', 'Hardware qualification', 'Failure analysis'],
+    items: ['NPI', 'Project management'],
   },
   {
-    area: 'Simulation & CAD',
-    items: ['Ansys', 'COMSOL', 'FEA', 'CFD', 'SolidWorks', 'AutoCAD'],
+    area: 'CAD / FEA',
+    items: ['SolidWorks', 'Ansys', 'COMSOL', 'AutoCAD'],
   },
   {
-    area: 'Test & instrumentation',
-    items: ['Vibration', 'Shock', 'Thermal', 'HALT', 'LabVIEW', 'NI DAQ', 'SCPI', 'Simulink', 'LTspice', 'Keil'],
+    area: 'Electronics / Embedded',
+    items: ['LTspice', 'LabVIEW', 'NI DAQ', 'Keil'],
   },
   {
-    area: 'Software & data',
-    items: ['Python', 'PyTorch', 'MATLAB', 'C++', 'SQL', 'MySQL', 'Docker', 'Git'],
+    area: 'Statistics',
+    items: ['Weibull analysis', 'B10 life / MTTF', 'Monte Carlo simulation', 'Cp / Cpk'],
   },
   {
-    area: 'AI workflow',
-    items: ['LLM agents', 'MCP', 'LangChain', 'LangGraph', 'AWS'],
+    area: 'Coding & data',
+    items: ['Python', 'MATLAB', 'SQL', 'PyTorch', 'Git', 'Docker'],
   },
   {
-    area: 'Reliability & statistics',
-    items: ['Weibull analysis', 'Life data analysis', 'Accelerated life testing', 'Monte Carlo'],
-  },
-  {
-    area: 'Languages',
-    items: ['Mandarin (native)', 'English (professional)'],
+    area: 'AI',
+    items: ['LLM agents', 'MCP', 'LangGraph', 'AWS'],
   },
 ];
 
