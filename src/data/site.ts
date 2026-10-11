@@ -298,7 +298,8 @@ export const SKILLS = [
 
 /* Public repositories only. Never listed: `Amazon` and `Acoustic-Analysis`,
    employer-confidential material, regardless of their visibility setting. */
-/* Shown in this order, all at once, laid out like "Outside the lab": text
+/* Shown in this order: the three projects with their own page first, in the
+   same order as their "Next project" links, then coursework. All at once, laid out like "Outside the lab": text
    and figures on the left, the repo's README images in a narrow column on
    the right. `stats` are copied from each repo's README, which is where a
    visitor can check them; update both together. `media` is copied into
@@ -315,38 +316,6 @@ export const PROJECTS: {
   stats?: { label: string; value: string }[];
   media?: { src: string; alt: string; caption?: string }[];
 }[] = [
-  {
-    title: 'Deep learning coursework',
-    kind: 'Machine learning',
-    repo: 'deep-learning-coursework',
-    summary:
-      'Graduate homework in PyTorch: regression on analytic fluid flows with an architecture ablation, a CNN on CIFAR-10, neural style transfer (VGG19, L-BFGS) and a physics-informed network for the 1D wave equation.',
-    stats: [
-      { label: 'Assignments', value: '5' },
-    ],
-    media: [
-      { src: '/media/work/dl-style-transfer.mp4', alt: 'Neural style transfer, retrained: a photo of steps into the sea taking on Starry Night style, step by step.' },
-      { src: '/media/work/dl-style-zodiac.mp4', alt: "A campus photo taking on the style of Mucha's Zodiac, step by step." },
-    ],
-  },
-  {
-    title: 'College portfolio',
-    kind: 'Mechanical engineering',
-    repo: 'College_Portfolio',
-    summary:
-      'Coursework, projects and an internship from my B.S. at NCKU: a two-robot retrieve-and-transport system, vibration control research, fan CFD at SGS, FEA, mechanism design and CAD.',
-    stats: [
-      { label: 'Years', value: '2020–2024' },
-    ],
-    media: [
-      { src: '/media/work/college-robot-handoff.mp4', alt: 'Retrieval and transport robots handing off a part.' },
-      { src: '/media/work/college-ev3-line-following.mp4', alt: 'An EV3 robot following a line.' },
-      { src: '/media/work/college-fan-cfd.mp4', alt: 'Fan CFD in Ansys Fluent, from the SGS internship.' },
-      { src: '/media/work/college-gear-motion.mp4', alt: 'Gear train simulation.' },
-      { src: '/media/work/college-spiral-trajectory.mp4', alt: '3D spiral trajectory plotted in MATLAB.' },
-      { src: '/media/work/college-ansys-stress.png', alt: 'Ansys stress and displacement analysis of a computer stand.' },
-    ],
-  },
   {
     title: 'Visual servo control of a piezoelectric motor',
     kind: 'Research instrumentation',
@@ -392,6 +361,38 @@ export const PROJECTS: {
     ],
     media: [
       { src: '/media/work/weathering-dashboard.mp4', alt: 'Excel dashboard slicers: picking July, then July to September, then December and January across the year boundary, then every month; the temperature and precipitation charts follow.' },
+    ],
+  },
+  {
+    title: 'Deep learning coursework',
+    kind: 'Machine learning',
+    repo: 'deep-learning-coursework',
+    summary:
+      'Graduate homework in PyTorch: regression on analytic fluid flows with an architecture ablation, a CNN on CIFAR-10, neural style transfer (VGG19, L-BFGS) and a physics-informed network for the 1D wave equation.',
+    stats: [
+      { label: 'Assignments', value: '5' },
+    ],
+    media: [
+      { src: '/media/work/dl-style-transfer.mp4', alt: 'Neural style transfer, retrained: a photo of steps into the sea taking on Starry Night style, step by step.' },
+      { src: '/media/work/dl-style-zodiac.mp4', alt: "A campus photo taking on the style of Mucha's Zodiac, step by step." },
+    ],
+  },
+  {
+    title: 'College portfolio',
+    kind: 'Mechanical engineering',
+    repo: 'College_Portfolio',
+    summary:
+      'Coursework, projects and an internship from my B.S. at NCKU: a two-robot retrieve-and-transport system, vibration control research, fan CFD at SGS, FEA, mechanism design and CAD.',
+    stats: [
+      { label: 'Years', value: '2020–2024' },
+    ],
+    media: [
+      { src: '/media/work/college-robot-handoff.mp4', alt: 'Retrieval and transport robots handing off a part.' },
+      { src: '/media/work/college-ev3-line-following.mp4', alt: 'An EV3 robot following a line.' },
+      { src: '/media/work/college-fan-cfd.mp4', alt: 'Fan CFD in Ansys Fluent, from the SGS internship.' },
+      { src: '/media/work/college-gear-motion.mp4', alt: 'Gear train simulation.' },
+      { src: '/media/work/college-spiral-trajectory.mp4', alt: '3D spiral trajectory plotted in MATLAB.' },
+      { src: '/media/work/college-ansys-stress.png', alt: 'Ansys stress and displacement analysis of a computer stand.' },
     ],
   },
 ];

@@ -279,8 +279,11 @@ const description =
       }
     </div>
 
+    <!-- The only route from home to the projects; without it a visitor has to
+         find them at the bottom of About. -->
     <p class="vantage__foot">
       <a class="textlink" href="/about">See the experience behind this →</a>
+      <a class="textlink" href="/about#work">See selected work →</a>
     </p>
   </section>
 
@@ -837,6 +840,9 @@ const description =
   }
 
   .vantage__foot {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 2rem;
     margin: 2rem 0 0;
   }
 
