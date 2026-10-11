@@ -125,7 +125,7 @@ export const VANTAGE = [
     logo: logoAmazon,
     kind: 'Engineer · Global consumer brand',
     verb: 'Build the case for readiness',
-    period: '2025–present',
+    period: '2025–2026',
     learned:
       'Across EVT, DVT, PVT, HVT and mass production, the question stops being "did it pass" and becomes "do we ship". Evidence, statistics and business context arrive at the same table. My job is to make the evidence strong enough to answer that question.',
   },
@@ -220,7 +220,7 @@ export const EXPERIENCE = [
     org: 'Amazon',
     logo: logoAmazon,
     title: 'Hardware Engineer · Product Integrity',
-    period: 'Mar 2025–present',
+    period: '2025–2026',
     note: 'Joined as Hardware Development Engineer Intern; engineer since Mar 2026.',
     points: [
       'Hardware qualification across the full NPI lifecycle: EVT, DVT, PVT, HVT through mass production.',

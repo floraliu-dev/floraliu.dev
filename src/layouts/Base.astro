@@ -84,7 +84,6 @@ if (path === '/') {
         url: siteUrl,
         image: new URL(portrait.src, Astro.site).href,
         jobTitle: SITE.role,
-        worksFor: { '@type': 'Organization', name: 'Amazon', url: 'https://www.amazon.com' },
         alumniOf: EDUCATION.map((e) => ({ '@type': 'CollegeOrUniversity', name: e.school })),
         email: `mailto:${SITE.email}`,
         address: { '@type': 'PostalAddress', addressCountry: 'TW' },
@@ -165,7 +164,7 @@ if (article && !noindex) {
     <meta
       property="og:image:alt"
       content={socialOverride?.alt ??
-        'Flora Liu, Hardware Engineer at Amazon. Design · Testing · Decisions. floraliu.dev. Drawn as an engineering sheet: an exploded isometric view of her piezoelectric plate motor and a Weibull reliability plot.'}
+        'Flora Liu. Design · Testing · Decisions. floraliu.dev. Drawn as an engineering sheet: an exploded isometric view of her piezoelectric plate motor and a Weibull reliability plot.'}
     />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={fullTitle} />
