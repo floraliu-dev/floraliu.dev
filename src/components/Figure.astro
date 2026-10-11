@@ -79,10 +79,11 @@ const max = wide ? '60rem' : narrow ? '24rem' : '32rem';
     const svg = fig && fig.querySelector('svg.chart');
     const lines = svg ? svg.querySelectorAll('polyline.chart__line') : [];
     if (!lines.length) return;
-    // pathLength="1" makes every curve one unit long, so one dash rule
-    // draws them all at the same pace whatever their real length.
+    // Each curve's own length sets its dash, so the dash rule draws it.
+    // (pathLength="1" would be simpler, but Chrome ignores it on polyline
+    // and the curves rendered as a 1-unit dotted line.)
     lines.forEach((line) => {
-      line.setAttribute('pathLength', '1');
+      line.style.setProperty('--len', String(line.getTotalLength()));
       line.classList.add('chart__draw');
     });
     svg.classList.add('is-pending');
