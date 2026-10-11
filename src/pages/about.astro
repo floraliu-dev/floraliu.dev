@@ -27,28 +27,34 @@ import compass from '../assets/compass-fellowship.jpg';
       <div class="intro__lead">
         <h1 class="page-title">About</h1>
         <p class="intro__lede">
-          I am Flora Liu. I work on the product integrity side of NPI.
+          I am Flora Liu, a hardware engineer.
         </p>
       </div>
 
-      <!-- Condensed from four paragraphs. The three seats are set like the
-           GTC formula below, each with the role it plays, so the middle of the
-           story reads at a glance; the sentences around it keep the voice. -->
+      <!-- One point per paragraph: where she came from, then the three
+           questions she cares about, each linked to its essay. -->
       <div class="intro__body">
         <p>
           Mechanical engineering gave me the physics. Testing, product development and research taught
           me to turn it into data, then decisions. That turned out to be the harder half.
         </p>
-        <ol class="list-plain seats" aria-label="Three seats on the same supply chain">
-          <li><span class="seats__org">SGS</span><span class="seats__verb">produces evidence</span></li>
-          <li><span class="seats__org">Delta</span><span class="seats__verb">builds and pushes back</span></li>
-          <li><span class="seats__org">Amazon</span><span class="seats__verb">decides and lives with it</span></li>
-        </ol>
-        <p>I write about what happens in between, because almost nobody writes that down.</p>
         <p>
-          Now: turning hardware evidence into decisions the business can act on, and using agents to cut
-          coordination friction without handing over the judgement.
+          I'm interested in how a product <a href="/designed">gets designed</a>,
+          <a href="/confidence">earns confidence</a> and
+          <a href="/value">creates value</a>.
         </p>
+        <!-- What a recruiter acts on, right after the short intro, so the
+             text column is as tall as the photo beside it. -->
+        <div class="intro__cta">
+          <a class="btn btn--primary" href={SITE.resume} target="_blank" rel="noopener">
+            Download résumé (PDF)
+          </a>
+          <ul class="list-plain intro__links">
+            <li><a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
+            <li><a href={SITE.linkedin} target="_blank" rel="me noopener">LinkedIn →</a></li>
+            <li><a href={SITE.github} target="_blank" rel="me noopener">GitHub →</a></li>
+          </ul>
+        </div>
       </div>
 
       <div class="intro__aside">
@@ -60,17 +66,6 @@ import compass from '../assets/compass-fellowship.jpg';
           sizes="(max-width: 800px) 60vw, 20rem"
           loading="eager"
         />
-        <!-- The spot under the photo is the most-seen place on the page after
-             the headline, so it holds what a recruiter acts on: ways to reach
-             her, not facts the page already states. -->
-        <a class="btn btn--primary intro__resume" href={SITE.resume} target="_blank" rel="noopener">
-          Download résumé (PDF)
-        </a>
-        <ul class="list-plain intro__links">
-          <li><a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
-          <li><a href={SITE.linkedin} target="_blank" rel="me noopener">LinkedIn →</a></li>
-          <li><a href={SITE.github} target="_blank" rel="me noopener">GitHub →</a></li>
-        </ul>
       </div>
     </section>
 
@@ -373,7 +368,7 @@ import compass from '../assets/compass-fellowship.jpg';
     grid-template-columns: minmax(0, 1fr) minmax(14rem, 20rem);
     grid-template-areas: 'lead aside' 'body aside';
     /* The photo column is taller than the text; the spare height goes to
-       the body row, so the lede and the seats stay together. */
+       the body row, so the lede and the body stay together. */
     grid-template-rows: auto 1fr;
     gap: 0 clamp(2rem, 5vw, 4rem);
     padding-top: clamp(1.5rem, 4vw, 2.5rem);
@@ -393,49 +388,6 @@ import compass from '../assets/compass-fellowship.jpg';
     grid-area: aside;
   }
 
-  /* SGS → Delta → Amazon, each seat's verb under its name. The arrows are
-     decoration; the list order already carries the sequence. */
-  .seats {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem 1rem;
-    margin: 1.75rem 0 2rem;
-    font-family: var(--font-mono);
-  }
-
-  .seats li {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .seats li + li::before {
-    content: '→';
-    position: absolute;
-    margin-left: -1.6rem;
-    font-size: var(--fs-lede);
-    color: var(--ink-muted);
-  }
-
-  .seats li + li {
-    position: relative;
-    padding-left: 1.6rem;
-  }
-
-  .seats__org {
-    font-size: var(--fs-lede);
-    font-weight: 600;
-    color: var(--accent);
-  }
-
-  /* Wraps to two short lines, so the three columns stay narrow. */
-  .seats__verb {
-    max-width: 8.5rem;
-    font-family: var(--font-sans);
-    font-size: var(--fs-meta);
-    line-height: 1.4;
-    color: var(--ink-muted);
-  }
-
   .intro__lede {
     margin-top: 1.25rem;
     font-size: var(--fs-lede);
@@ -450,20 +402,22 @@ import compass from '../assets/compass-fellowship.jpg';
     width: 100%;
     height: auto;
     border-radius: var(--radius);
-    margin-bottom: 1rem;
   }
 
-  /* The one action a recruiter on this page most wants, so it is the one
-     filled button, directly under the photo. */
-  .intro__resume {
-    width: 100%;
-    margin-bottom: 1rem;
+  /* The résumé is the one filled button on the page; the contact links sit
+     beside it on one line and wrap under it when the column is narrow. */
+  .intro__cta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem 1.5rem;
+    margin-top: 2rem;
   }
 
   .intro__links {
     display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
+    flex-wrap: wrap;
+    gap: 0.35rem 1.25rem;
     font-family: var(--font-sans);
     font-size: var(--fs-meta);
     font-weight: 600;

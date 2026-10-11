@@ -219,7 +219,6 @@ export const EXPERIENCE = [
     logo: logoAmazon,
     title: 'Hardware Engineer · Product Integrity',
     period: '2025–2026',
-    note: 'Joined as Hardware Development Engineer Intern; engineer since Mar 2026.',
     points: [
       'Hardware qualification across the full NPI lifecycle: EVT, DVT, PVT, HVT through mass production.',
       'Automated the coordination layer of NPI (issue tracking, status queries, reporting) so engineering time goes to judgement, not status chasing.',
