@@ -74,7 +74,6 @@ const repo = `${SITE.github}/piezo-motor-visual-servo`;
       </p>
       <Figure
         no="1"
-        size="medium"
         src={structure}
         alt="Exploded view of the motor: a 9 by 6 mm stainless steel plate under a PZT sheet with split electrodes. Electrodes A1 and A2 are marked; Y linear motion uses modes Φ20 and Φ21, Z rotation uses Φ21 and Φ31."
         caption="Motor structure and electrode layout. Linear motion uses modes Φ20 + Φ21; rotation uses Φ21 + Φ31."
@@ -105,7 +104,6 @@ const repo = `${SITE.github}/piezo-motor-visual-servo`;
       </p>
       <Figure
         no="3"
-        size="medium"
         src={loop}
         alt="Block diagram: reference minus measured output gives the error; mode decision and PID give a command, sent through a compound SCPI write to the function generator and HV amplifier, which drive the actuator. A camera with Kalman and EMA filtering measures the motion at 120 fps and feeds it back."
         caption="The control loop. Camera, filtering and control run as three threads at 120 FPS."
@@ -130,7 +128,7 @@ const repo = `${SITE.github}/piezo-motor-visual-servo`;
       </p>
       <Figure
         no="4"
-        size="narrow"
+        narrow
         src={position}
         alt="Two trajectories from the same start. Without control the path wanders left, ending 10.2° off; with control it stays nearly straight, 2.6° off."
         caption="One straight run with and without heading control: 10.2° of drift down to 2.6°."

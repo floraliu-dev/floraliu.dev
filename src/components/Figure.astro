@@ -13,19 +13,18 @@ interface Props {
   no: string;
   /** Break out of the text measure for wide or photographic figures. */
   wide?: boolean;
-  /** In between: `medium` for diagrams that need some width but not the
-   *  full break-out, `narrow` for square plots that would otherwise run tall. */
-  size?: 'medium' | 'narrow';
+  /** Narrower than the default, for square plots that would otherwise run tall. */
+  narrow?: boolean;
   /** Where the figure comes from, printed as "Ref:" under the caption.
    *  `href` links the DOI or source page. */
   source?: { text: string; href?: string };
 }
 
-const { src, alt, caption, no, wide = false, size, source } = Astro.props;
-const max = wide ? '60rem' : size === 'medium' ? '44rem' : size === 'narrow' ? '24rem' : '32rem';
+const { src, alt, caption, no, wide = false, narrow = false, source } = Astro.props;
+const max = wide ? '60rem' : narrow ? '24rem' : '32rem';
 ---
 
-<figure class:list={['fig', wide && 'fig--wide', size && `fig--${size}`]}>
+<figure class:list={['fig', wide && 'fig--wide', narrow && 'fig--narrow']}>
   <div class="fig__frame">
     {
       src ? (
@@ -121,10 +120,6 @@ const max = wide ? '60rem' : size === 'medium' ? '44rem' : size === 'narrow' ? '
 
   .fig--wide {
     max-width: 60rem;
-  }
-
-  .fig--medium {
-    max-width: 44rem;
   }
 
   .fig--narrow {
