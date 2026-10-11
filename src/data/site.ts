@@ -219,8 +219,8 @@ export const EXPERIENCE = [
       'Hardware qualification across the full NPI lifecycle: EVT, DVT, PVT, HVT through mass production.',
       'Automated NPI issue tracking, status checks and reporting to cut time spent on routine updates.',
       'Built a test-data platform (MySQL + dashboards) so test evidence could be queried instead of reassembled by hand.',
-      'Statistical analysis for risk-based ship decisions: lifetime modelling, distribution fitting, and uncertainty quantification rather than point estimates.',
-      'Applied data and AI-assisted workflows to failure-analysis problems.',
+      'Analyzed reliability data to support product-readiness decisions: lifetime modeling, distribution fitting and uncertainty estimates.',
+      'Used data analysis and AI tools to support failure analysis.',
     ],
   },
   {
@@ -229,8 +229,8 @@ export const EXPERIENCE = [
     title: 'R&D Engineer Intern · Lab for Digital Twin-Based Optimization',
     period: 'Jul–Aug 2024',
     points: [
-      'Built modular Python tooling to automate parametric modelling and FEA execution, shortening the design-to-analysis loop.',
-      'Wrapped it in an interface non-programmers could use, then iterated with the engineers who actually ran it.',
+      'Built Python tools to automate parametric modeling and FEA runs, shortening the time from design to analysis.',
+      "Added an interface for engineers who don't code, and improved it with their feedback.",
     ],
   },
   {
@@ -241,7 +241,7 @@ export const EXPERIENCE = [
     points: [
       'Ran vibration, shock, thermal, ingress and HALT testing; instrumented rigs with LabVIEW and DAQ.',
       'Compared physical measurements with FEA results and reported where they differed.',
-      'Introduced an FEA-supported workflow so clients received engineering insight, not just a pass/fail certificate.',
+      'Added FEA to the test workflow to help explain results to clients.',
     ],
   },
 ];
@@ -403,19 +403,19 @@ export const SPEAKING_TOPICS = [
       'How a product moves from design to mass production, where NPI decisions get difficult, and who ends up carrying the risk.',
   },
   {
-    title: 'Reading test data like an engineer, not a spreadsheet',
+    title: 'How to read reliability test data',
     blurb:
-      'Why the average lifetime is a dangerous number, what small samples can and cannot tell you, and how uncertainty gets made visible.',
+      'Why average lifetime can mislead, what small samples can and cannot tell you, and how to show uncertainty.',
   },
   {
-    title: 'Using AI without outsourcing your judgement',
+    title: 'How I use AI in hardware work',
     blurb:
-      'Where agents genuinely remove friction in hardware development, where they must not be trusted, and how to keep an engineer accountable for the call.',
+      "Where AI tools save time in hardware development, where I don't trust them, and how I check their output.",
   },
   {
     title: 'From mechanical engineering to hardware at a consumer brand',
     blurb:
-      'A career path told honestly: the interviews, the coffee chats, the parts nobody puts on a résumé.',
+      'My path so far: interviews, coffee chats, and what I learned along the way.',
   },
 ];
 
@@ -443,7 +443,7 @@ export const TALKS: Talk[] = [
     /* Tech Network's own post describing the event series. */
     eventUrl: 'https://www.instagram.com/p/DbBP7hwj9rq/',
     eventUrlLabel: 'About the event',
-    audience: 'A meetup for tech-industry interns across SWE, HWE, PM and sales.',
+    audience: 'A meetup for tech interns in software, hardware, product management and sales.',
     year: '2026',
     role: 'Invited speaker',
     summary:
@@ -454,7 +454,7 @@ export const TALKS: Talk[] = [
       src: techieTalkGroup,
       alt: 'Attendees and speakers gathered at the Techie Talk 2026 community event.',
       caption:
-        'Techie Talk 2026: a room of mixed backgrounds, the best kind to explain to.',
+        'Techie Talk 2026: interns from many backgrounds.',
     },
   },
   {
@@ -473,7 +473,7 @@ export const TALKS: Talk[] = [
       src: spieTalk,
       alt: 'Flora Liu at the lectern at SPIE Smart Structures + NDE 2026, beside a slide titled "Structure Design of the Miniature piezoelectric motor".',
       caption:
-        'SPIE 2026, Vancouver: presenting the motor’s structure design.',
+        'SPIE 2026, Vancouver: presenting the motor’s design.',
     },
   },
 ];

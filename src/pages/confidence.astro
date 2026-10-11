@@ -33,7 +33,7 @@ import '../styles/chart.css';
       </p>
       <p>
         The count only matters if the measurement can be trusted, which is why Gage R&amp;R comes
-        first. Sample size sets what a result is allowed to mean.
+        first. Sample size limits what a result can tell you.
       </p>
       <p class="aside">
         From the success-run theorem, n = ln(1 − C) / ln(R).
@@ -47,17 +47,17 @@ import '../styles/chart.css';
   <section class="sub">
     <div class="sub__head">
       <span class="sub__no">2.2</span>
-      <h2>The mean can pass while the tail fails</h2>
+      <h2>A good average can hide early failures</h2>
     </div>
     <div class="sub__body">
       <p>
-        Failures do not arrive evenly. Over a product's life, the failure rate traces a bathtub:
+        Failures do not arrive evenly. Over a product's life, the failure rate often follows a bathtub curve:
         early failures from defects that escaped the line, a flat stretch of random failures, then
         wear-out.
       </p>
       <Figure
         no="2.1"
-        caption="The bathtub curve. Weibull β places a failure mode in its region."
+        caption="The bathtub curve. Weibull β shows whether the failure rate is falling, flat or rising."
       >
         <svg
           class="chart"
@@ -85,7 +85,7 @@ import '../styles/chart.css';
       </Figure>
       <p>
         Each region needs different evidence. Screening and build quality catch early failures. Life
-        tests prove wear-out. A model that assumes the flat bottom, like the exponential, can miss
+        tests show wear-out. A model that assumes a constant failure rate, like the exponential, can miss
         both ends.
       </p>
       <p>
@@ -177,7 +177,7 @@ import '../styles/chart.css';
         can all belong to the same mechanism.
       </p>
       <p>
-        A corrective action matters only when it breaks that chain. Revalidation proves whether it did.
+        A corrective action matters only when it breaks that chain. Revalidation shows whether it did.
       </p>
       <p>
         <strong>

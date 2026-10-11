@@ -10,7 +10,7 @@ interface Props {
   alt?: string;
   caption: string;
   /** Figure number, e.g. "2.1". Rendered as `FIG 2.1`. */
-  no: string;
+  no?: string;
   /** Break out of the text measure for wide or photographic figures. */
   wide?: boolean;
   /** Narrower than the default, for square plots that would otherwise run tall. */
@@ -42,7 +42,7 @@ const max = wide ? '60rem' : narrow ? '24rem' : '32rem';
     }
   </div>
   <figcaption class="fig__cap">
-    <span class="label fig__no">Fig {no}</span>
+    {no && <span class="label fig__no">Fig {no}</span>}
     <span>
       {caption}
       {

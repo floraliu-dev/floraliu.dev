@@ -26,8 +26,8 @@ import { SPEAKING_TOPICS, TALKS, SITE } from '../data/site';
         <div>
           <h2>What I can talk about</h2>
           <p class="section-head__sub">
-            Any of these can be sized to a 15-minute slot or a full session. Happy to shape something
-            to your audience instead.
+            Each topic works as a 15-minute talk or a full session, and I can adapt it to your
+            audience.
           </p>
         </div>
       </div>
@@ -83,7 +83,6 @@ import { SPEAKING_TOPICS, TALKS, SITE } from '../data/site';
             {t.photo && (
               <Figure
                 src={t.photo.src}
-                no={`4.2.${i + 1}`}
                 alt={t.photo.alt}
                 caption={t.photo.caption}
               />

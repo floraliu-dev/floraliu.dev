@@ -29,7 +29,7 @@ import crackStages from '../assets/crack-stages-liu2018.png';
     </div>
     <div class="sub__body">
       <p>
-        Design starts before any drawing. Someone recognises a need, and the need has to become a
+        Design starts before any drawing. Someone recognizes a need, and the need has to become a
         problem specific enough to solve. Then come a candidate design, analysis and optimization,
         and evaluation against the original need.
       </p>
@@ -146,18 +146,19 @@ import crackStages from '../assets/crack-stages-liu2018.png';
       <p>
         <strong>Stage I, initiation.</strong> Cyclic slip at the surface opens a microcrack along
         shear planes, near 45° to the load. It starts where stress concentrates: a sharp corner, a
-        scratch, a void. Below a threshold stress intensity, it does not grow at all.
+        scratch, a void. Below a threshold, a small crack may not grow at all.
       </p>
       <p>
         <strong>Stage II, propagation.</strong> The crack turns perpendicular to the load and grows
-        a little every cycle, leaving beach marks on the fracture surface. Its growth rate follows
-        Paris' law, da/dN = C(ΔK)<sup>m</sup>, which is what makes remaining life predictable. In
+        a little with each cycle. Changes in loading leave beach marks on the fracture surface. Its
+        growth rate follows Paris' law, da/dN = C(ΔK)<sup>m</sup>, which lets engineers estimate
+        remaining life. In
         failure analysis, beach marks are strong evidence of fatigue, read alongside striations and
         the loading history.
       </p>
       <p>
         <strong>Stage III, final fracture.</strong> The remaining section can no longer carry the
-        load and breaks in a single cycle.
+        load and breaks suddenly.
       </p>
       <p>
         A sharp corner concentrates stress where Stage I begins. A radius spreads it out. That is
@@ -178,10 +179,10 @@ import crackStages from '../assets/crack-stages-liu2018.png';
         nothing in its way. Inside an enclosure, every wall, grille and component pushes back, and
         the airflow it actually delivers drops.
       </p>
-      <Figure no="1.4" caption="My Ansys Fluent model of an 80 mm fan in a duct: fast air at the walls, a still wake behind the hub.">
+      <Figure no="1.4" caption="My Ansys Fluent model of an 80 mm fan in a duct: fast air in the outer ring, a slow wake behind the hub.">
         <LoopVideo
           src="/media/fan-velocity-duct.mp4"
-          alt="CFD velocity contour of an 80 mm fan in a rectangular duct. Air accelerates along the duct walls and forms a long low-velocity wake behind the fan hub."
+          alt="CFD velocity contour of an 80 mm fan in a rectangular duct. Fast air moves in the outer ring and a long low-velocity wake forms behind the fan hub."
           width={1040}
           height={480}
         />
