@@ -7,7 +7,6 @@ import structure from '../../assets/work/piezo-motor-structure.jpg';
 import setup from '../../assets/work/piezo-setup.png';
 import loop from '../../assets/work/piezo-control-loop.png';
 import position from '../../assets/work/piezo-position-comparison.png';
-import switching from '../../assets/work/piezo-gen-comparison.png';
 import socialCard from '../../assets/og/piezo-motor.png';
 
 /* Project page; see work/test2fail.astro for how these pages are built.
@@ -40,14 +39,20 @@ const repo = `${SITE.github}/piezo-motor-visual-servo`;
         instead, and a PID loop corrects it 120 times a second.
       </p>
       <div class="proj-videos">
-        <LoopVideo
-          src="/media/work/piezo-demo-straight.mp4"
-          alt="Tracking view of a straight run: the motor is boxed in red on a grid, with live position, angle, speed and frame rate overlaid."
-        />
-        <LoopVideo
-          src="/media/work/piezo-demo-rotation.mp4"
-          alt="Tracking view of a rotation run, with the same live overlay."
-        />
+        <figure>
+          <LoopVideo
+            src="/media/work/piezo-without-control.mp4"
+            alt="Tracking view of an open-loop forward run: the motor, boxed in red on a grid, drifts off to one side as it moves."
+          />
+          <figcaption>Without control</figcaption>
+        </figure>
+        <figure>
+          <LoopVideo
+            src="/media/work/piezo-with-control.mp4"
+            alt="Tracking view of a closed-loop forward run: the motor, boxed in red on a grid, moves nearly straight."
+          />
+          <figcaption>With control</figcaption>
+        </figure>
       </div>
       <p class="aside">
         <a href={repo} target="_blank" rel="noopener">github.com/floraliu-dev/piezo-motor-visual-servo ↗</a>
@@ -69,7 +74,7 @@ const repo = `${SITE.github}/piezo-motor-visual-servo`;
       </p>
       <Figure
         no="1"
-        wide
+        size="medium"
         src={structure}
         alt="Exploded view of the motor: a 9 by 6 mm stainless steel plate under a PZT sheet with split electrodes. Electrodes A1 and A2 are marked; Y linear motion uses modes Φ20 and Φ21, Z rotation uses Φ21 and Φ31."
         caption="Motor structure and electrode layout. Linear motion uses modes Φ20 + Φ21; rotation uses Φ21 + Φ31."
@@ -100,7 +105,7 @@ const repo = `${SITE.github}/piezo-motor-visual-servo`;
       </p>
       <Figure
         no="3"
-        wide
+        size="medium"
         src={loop}
         alt="Block diagram: reference minus measured output gives the error; mode decision and PID give a command, sent through a compound SCPI write to the function generator and HV amplifier, which drive the actuator. A camera with Kalman and EMA filtering measures the motion at 120 fps and feeds it back."
         caption="The control loop. Camera, filtering and control run as three threads at 120 FPS."
@@ -125,6 +130,7 @@ const repo = `${SITE.github}/piezo-motor-visual-servo`;
       </p>
       <Figure
         no="4"
+        size="narrow"
         src={position}
         alt="Two trajectories from the same start. Without control the path wanders left, ending 10.2° off; with control it stays nearly straight, 2.6° off."
         caption="One straight run with and without heading control: 10.2° of drift down to 2.6°."
@@ -133,25 +139,6 @@ const repo = `${SITE.github}/piezo-motor-visual-servo`;
         Turning on the spot to a target angle between 3° and 8°, it settles within about 1.2° of
         the target.
       </p>
-    </div>
-  </section>
-
-  <section class="sub">
-    <div class="sub__head">
-      <h2>Switching drive modes in under a millisecond</h2>
-    </div>
-    <div class="sub__body">
-      <p>
-        Changing direction first meant re-uploading the waveform: about 268 ms, some 30 frames with
-        no new command. Preloading the waveforms and sending every change as one compound SCPI
-        command brought it under a millisecond, more than 600 times faster.
-      </p>
-      <Figure
-        no="5"
-        src={switching}
-        alt="Log-scale bar chart: a full waveform upload takes 268 ms; compound commands take 0.3 to 0.4 ms, 670 to 850 times faster."
-        caption="Mode-switch latency, full upload versus compound SCPI commands (log scale)."
-      />
     </div>
   </section>
 
@@ -183,6 +170,17 @@ const repo = `${SITE.github}/piezo-motor-visual-servo`;
     gap: 0.75rem;
     max-width: 30rem;
     margin: 1.5rem 0 0.75rem;
+  }
+
+  .proj-videos figure {
+    margin: 0;
+  }
+
+  .proj-videos figcaption {
+    margin-top: 0.4rem;
+    font-size: var(--fs-meta);
+    color: var(--ink-muted);
+    text-align: center;
   }
 
   .proj-videos :global(video) {

@@ -1,7 +1,8 @@
 ---
 import Essay from '../../layouts/Essay.astro';
 import Figure from '../../components/Figure.astro';
-import LoopVideo from '../../components/LoopVideo.astro';
+import { Image } from 'astro:assets';
+import report from '../../assets/work/test2fail-report.png';
 import { SITE } from '../../data/site';
 import survival from '../../assets/work/test2fail-survival-function-comparison.png';
 import cdf from '../../assets/work/test2fail-cdf-comparison.png';
@@ -34,9 +35,11 @@ const repo = `${SITE.github}/Test2Fail-Toolkit`;
         same steps every time, so I put them in one tool.
       </p>
       <div class="proj-video">
-        <LoopVideo
-          src="/media/work/test2fail-workflow.mp4"
-          alt="The Test2Fail GUI: picking dataset-2, entering 20,000 expected cycles, running the analysis, then scrolling through the whole PDF report."
+        <Image
+          src={report}
+          alt="First page of the generated PDF report: data source, methods, a results table with Weibull parameters, B10, B50, B95 and MTTF, and validation checks."
+          widths={[480, 960]}
+          sizes="(max-width: 800px) 100vw, 40rem"
         />
       </div>
       <p class="aside">
@@ -63,8 +66,8 @@ const repo = `${SITE.github}/Test2Fail-Toolkit`;
         no="1"
         wide
         src={survival}
-        alt="Survival curves for the same data under Weibull, Lognormal and Exponential fits. Their MTTFs sit within 1,000 cycles of each other, but the curves part early in life."
-        caption="Three fits to one dataset. The mean lives are close; the early-life curves are not."
+        alt="Survival curves for one synthetic dataset under Weibull, lognormal and exponential fits. Their MTTFs are within 400 cycles of each other, but the curves differ early in life."
+        caption="Three fits to one synthetic dataset. The mean lives are close; the early-life curves are not."
       />
     </div>
   </section>
@@ -90,15 +93,15 @@ const repo = `${SITE.github}/Test2Fail-Toolkit`;
     </div>
     <div class="sub__body">
       <p>
-        A best fit is only the best of three. The tool overlays the fitted CDF on the measured data
+        A best fit is only the best of three. The tool overlays the fitted CDF on the sample data
         and on a Monte Carlo sample drawn from the fit, then measures the largest gap between them.
       </p>
       <Figure
         no="2"
         wide
         src={cdf}
-        alt="Cumulative distribution of the measured lifetimes, a simulated sample and the fitted model, lying almost on top of each other. KS statistic 0.065, p-value 0.9507."
-        caption="Measured, simulated and fitted CDFs. The largest gap is 0.065 (KS test, p = 0.95): no sign the model is wrong."
+        alt="Cumulative distribution of the sample lifetimes, a simulated sample and the fitted model, lying close together."
+        caption="Sample, simulated and fitted CDFs. A visual check of the fit, not proof that the model is right."
       />
     </div>
   </section>
@@ -133,7 +136,9 @@ const repo = `${SITE.github}/Test2Fail-Toolkit`;
     margin: 1.5rem 0 0.75rem;
   }
 
-  .proj-video :global(video) {
+  .proj-video :global(img) {
+    width: 100%;
+    height: auto;
     border: 1px solid var(--rule);
     border-radius: 6px;
   }

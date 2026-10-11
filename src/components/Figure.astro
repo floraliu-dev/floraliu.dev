@@ -13,15 +13,19 @@ interface Props {
   no: string;
   /** Break out of the text measure for wide or photographic figures. */
   wide?: boolean;
+  /** In between: `medium` for diagrams that need some width but not the
+   *  full break-out, `narrow` for square plots that would otherwise run tall. */
+  size?: 'medium' | 'narrow';
   /** Where the figure comes from, printed as "Ref:" under the caption.
    *  `href` links the DOI or source page. */
   source?: { text: string; href?: string };
 }
 
-const { src, alt, caption, no, wide = false, source } = Astro.props;
+const { src, alt, caption, no, wide = false, size, source } = Astro.props;
+const max = wide ? '60rem' : size === 'medium' ? '44rem' : size === 'narrow' ? '24rem' : '32rem';
 ---
 
-<figure class:list={['fig', wide && 'fig--wide']}>
+<figure class:list={['fig', wide && 'fig--wide', size && `fig--${size}`]}>
   <div class="fig__frame">
     {
       src ? (
@@ -29,7 +33,7 @@ const { src, alt, caption, no, wide = false, source } = Astro.props;
           src={src}
           alt={alt ?? ''}
           widths={[480, 800, 1280]}
-          sizes={wide ? '(max-width: 50rem) 100vw, 60rem' : '(max-width: 32rem) 100vw, 32rem'}
+          sizes={`(max-width: ${max}) 100vw, ${max}`}
           loading="lazy"
           decoding="async"
         />
@@ -117,6 +121,14 @@ const { src, alt, caption, no, wide = false, source } = Astro.props;
 
   .fig--wide {
     max-width: 60rem;
+  }
+
+  .fig--medium {
+    max-width: 44rem;
+  }
+
+  .fig--narrow {
+    max-width: 24rem;
   }
 
   /* Rounded rather than framed: an outline around a photo adds a box the

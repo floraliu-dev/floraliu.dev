@@ -357,11 +357,10 @@ export const PROJECTS: {
     stats: [
       { label: 'Tracking', value: '120 FPS' },
       { label: 'Frame P99', value: '3.6 ms' },
-      { label: 'Mode switch', value: '<2 ms' },
       { label: 'Heading drift', value: '10.2° → 2.6°' },
     ],
     media: [
-      { src: '/media/work/piezo-position-comparison.png', alt: 'Motor trajectory with and without closed-loop control: the controlled run stays nearly straight.' },
+      { src: '/media/work/piezo-control-compare.mp4', alt: 'Two tracked forward runs side by side: without control the motor drifts off to one side; with control it moves nearly straight.' },
     ],
   },
   {
@@ -377,7 +376,7 @@ export const PROJECTS: {
       { label: 'Monte Carlo samples', value: '10,000' },
     ],
     media: [
-      { src: '/media/work/test2fail-workflow.mp4', alt: 'The Test2Fail GUI: picking dataset-2, entering 20,000 expected cycles, running the analysis, then scrolling through the whole PDF report.' },
+      { src: '/media/work/test2fail-survival.png', alt: 'Survival curves for one synthetic dataset under Weibull, lognormal and exponential fits.' },
     ],
   },
   {
