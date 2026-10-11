@@ -39,7 +39,7 @@ const repo = `${SITE.github}/Test2Fail-Toolkit`;
           src={report}
           alt="First page of the generated PDF report: data source, methods, a results table with Weibull parameters, B10, B50, B95 and MTTF, and validation checks."
           widths={[480, 960]}
-          sizes="(max-width: 800px) 100vw, 40rem"
+          sizes="(max-width: 800px) 100vw, 24rem"
         />
       </div>
       <p class="aside">
@@ -60,7 +60,6 @@ const repo = `${SITE.github}/Test2Fail-Toolkit`;
       </p>
       <Figure
         no="1"
-        wide
         src={survival}
         alt="Survival curves for one synthetic dataset under Weibull, lognormal and exponential fits. Their MTTFs are within 400 cycles of each other, but the curves differ early in life."
         caption="Three fits to one synthetic dataset. The mean lives are close; the early-life curves are not."
@@ -98,7 +97,6 @@ const repo = `${SITE.github}/Test2Fail-Toolkit`;
       </p>
       <Figure
         no="2"
-        wide
         src={cdf}
         alt="Cumulative distribution of the sample lifetimes, a simulated sample and the fitted model, lying close together."
         caption="Sample, simulated and fitted CDFs. A visual check of the fit, not proof that the model is right."
@@ -136,8 +134,13 @@ const repo = `${SITE.github}/Test2Fail-Toolkit`;
     margin: 1.5rem 0 0.75rem;
   }
 
+  /* A portrait report page: kept to the narrow figure width so it does not
+     run taller than the screen. */
   .proj-video :global(img) {
+    display: block;
     width: 100%;
+    max-width: 24rem;
+    margin-inline: auto;
     height: auto;
     border: 1px solid var(--rule);
     border-radius: 6px;

@@ -196,7 +196,7 @@ export const PROOF: Proof[] = [
         href: 'https://doi.org/10.1117/12.3090434',
       },
       {
-        text: 'Techie Talk (Invited)',
+        text: 'Techie Talk (Lightning talk)',
         href: 'https://www.linkedin.com/feed/update/urn:li:activity:7499979345533452288/',
       },
     ],
@@ -446,7 +446,7 @@ export const TALKS: Talk[] = [
     eventUrlLabel: 'About the event',
     audience: 'A meetup for tech interns in software, hardware, product management and sales.',
     year: '2026',
-    role: 'Invited speaker',
+    role: 'Lightning speaker',
     summary:
       'Shared what hardware engineering looks like inside a global consumer brand: from design to mass production, the decisions that get hard, and how AI can support the workflow without replacing the engineer.',
     /* Her own write-up of the event; LinkedIn counted 5,000+ impressions. */
