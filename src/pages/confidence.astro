@@ -8,6 +8,16 @@ import '../styles/chart.css';
   docNo="02"
   title="How a product earns confidence"
   description="How much evidence is enough: sample size, the tail of the distribution, and the explanation behind a failure."
+  refs={[
+    {
+      text: 'Sample size for success testing (success-run theorem, n = ln(1 − C) / ln(R)), Accendo Reliability.',
+      href: 'https://accendoreliability.com/sample-size-success-testing/',
+    },
+    {
+      text: 'Section 2.2 analysis made with my open-source Test2Fail Toolkit, on its synthetic sample data.',
+      href: 'https://github.com/floraliu-dev/Test2Fail-Toolkit',
+    },
+  ]}
 >
   <div class="sub">
     <div class="sub__body">
@@ -34,12 +44,6 @@ import '../styles/chart.css';
       <p>
         The count only matters if the measurement can be trusted, which is why Gage R&amp;R comes
         first. Sample size limits what a result can tell you.
-      </p>
-      <p class="aside">
-        From the success-run theorem, n = ln(1 − C) / ln(R).
-        <a href="https://accendoreliability.com/sample-size-success-testing/" target="_blank"
-          rel="noopener">Reference ↗</a
-        >
       </p>
     </div>
   </section>
@@ -151,12 +155,6 @@ import '../styles/chart.css';
         Warranty returns live in that early tail, and the tail depends on the model. A mean that
         clears the target can still hide a problem. Until the data can tell the models apart, there
         is not enough evidence yet.
-      </p>
-      <p class="aside">
-        Analysis built with my open-source
-        <a href="https://github.com/floraliu-dev/Test2Fail-Toolkit" target="_blank" rel="noopener"
-          >Test2Fail Toolkit ↗</a
-        >.
       </p>
     </div>
   </section>

@@ -11,6 +11,19 @@ import crackStages from '../assets/crack-stages-liu2018.png';
   docNo="01"
   title="How a product gets designed"
   description="How a design gets made and why it takes the shape it does: the design process, competing considerations, and two decisions traced to their reasons."
+  refs={[
+    {
+      text: "R. G. Budynas and J. K. Nisbett, Shigley's Mechanical Engineering Design, 11th ed., McGraw-Hill, 2020. Design process, design considerations and fatigue, chapters 1 and 6. Fig. 1.1 adapted from Fig. 1–1.",
+    },
+    {
+      text: 'A. Armillotta (2023), Int. J. Adv. Manuf. Technol. 129, 3695–3711. Fig. 1.2 from Fig. 2, CC BY 4.0.',
+      href: 'https://doi.org/10.1007/s00170-023-12551-2',
+    },
+    {
+      text: 'D. Liu and D. J. Pons (2018), Metals 8(8), 623. Fig. 1.3 from Fig. 1, CC BY 4.0.',
+      href: 'https://doi.org/10.3390/met8080623',
+    },
+  ]}
 >
   <div class="sub">
     <div class="sub__body">
@@ -36,9 +49,6 @@ import crackStages from '../assets/crack-stages-liu2018.png';
       <Figure
         no="1.1"
         caption="The design process. The loops back are the point."
-        source={{
-          text: "Adapted from R. G. Budynas and J. K. Nisbett, Shigley's Mechanical Engineering Design, 11th ed., Fig. 1–1",
-        }}
       >
         <svg
           class="chart"
@@ -101,10 +111,6 @@ import crackStages from '../assets/crack-stages-liu2018.png';
         src={costTolerance}
         alt="Cost of a pin-hole clearance fit against the variation of the clearance, for ISO tolerance grades IT5 to IT11. Cost falls steeply from IT5 at about 0.01 mm to IT8 at about 0.05 mm, then flattens toward IT11 at about 0.22 mm."
         caption="Fit cost climbs steeply as tolerance tightens, IT11 to IT5."
-        source={{
-          text: 'A. Armillotta (2023), Int. J. Adv. Manuf. Technol. 129, 3695–3711, Fig. 2. CC BY 4.0',
-          href: 'https://doi.org/10.1007/s00170-023-12551-2',
-        }}
       />
       <p>
         In one analysis of a pin-hole fit, ±0.14 mm (IT10) may not need finish machining at all.
@@ -138,10 +144,6 @@ import crackStages from '../assets/crack-stages-liu2018.png';
         src={crackStages}
         alt="Log crack growth rate da/dN against log stress intensity range ΔK, divided into three regions: I crack initiation above a threshold, II crack propagation following da/dN = C(ΔK)^m, and III fracture where the rate rises sharply."
         caption="Three stages of crack growth."
-        source={{
-          text: 'D. Liu and D. J. Pons (2018), Metals 8(8), 623, Fig. 1. CC BY 4.0',
-          href: 'https://doi.org/10.3390/met8080623',
-        }}
       />
       <p>
         <strong>Stage I, initiation.</strong> Cyclic slip at the surface opens a microcrack along
@@ -194,11 +196,6 @@ import crackStages from '../assets/crack-stages-liu2018.png';
       </p>
       <p>
         <strong>A design is finished when every feature can answer "why".</strong>
-      </p>
-      <p class="aside">
-        Reference: R. G. Budynas and J. K. Nisbett, <cite>Shigley's Mechanical Engineering Design</cite>,
-        11th ed., McGraw-Hill, 2020. Design process, design considerations and fatigue mechanisms
-        from chapters 1 and 6.
       </p>
     </div>
   </section>

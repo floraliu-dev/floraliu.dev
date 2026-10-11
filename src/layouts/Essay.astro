@@ -20,9 +20,11 @@ interface Props {
   next?: { href: string; kicker: string; title: string; promise: string };
   /** Passed through to Base: this page's own link-preview card. */
   social?: { image: ImageMetadata; alt: string };
+  /** Sources, listed once at the end instead of under each figure. */
+  refs?: { text: string; href?: string }[];
 }
 
-const { docNo, title, description, thesis, next: nextOverride, social } = Astro.props;
+const { docNo, title, description, thesis, next: nextOverride, social, refs } = Astro.props;
 
 // The essays read in order. The last one hands the reader to the person who
 // wrote them, rather than looping back to the first essay.
@@ -51,6 +53,27 @@ const thesisText = thesis ?? PILLARS[here]?.promise ?? '';
     <div class="essay__body">
       <slot />
     </div>
+
+    {
+      refs && refs.length > 0 && (
+        <section class="refs" aria-labelledby="refs-title">
+          <h2 class="label refs__title" id="refs-title">References</h2>
+          <ol class="refs__list">
+            {refs.map((r) => (
+              <li>
+                {r.href ? (
+                  <a href={r.href} target="_blank" rel="noopener">
+                    {r.text} ↗
+                  </a>
+                ) : (
+                  r.text
+                )}
+              </li>
+            ))}
+          </ol>
+        </section>
+      )
+    }
 
     <footer class="essay__end">
       <a class="nextup" href={next.href}>
@@ -234,6 +257,28 @@ const thesisText = thesis ?? PILLARS[here]?.promise ?? '';
     font-size: var(--fs-lede);
     font-weight: 600;
     color: var(--ink);
+  }
+
+  /* All of an essay's sources in one place, after the argument. */
+  .refs {
+    margin-top: clamp(2.5rem, 6vw, 3.5rem);
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .refs__title {
+    margin: 0 0 0.75rem;
+  }
+
+  .refs__list {
+    margin: 0;
+    padding-left: 1.25rem;
+    font-size: var(--fs-meta);
+    color: var(--ink-muted);
+  }
+
+  .refs__list li {
+    margin-bottom: 0.4rem;
   }
 
   /* Sources and repo links: present, but below the argument. */
