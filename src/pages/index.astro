@@ -6,7 +6,7 @@ import { PILLARS, VANTAGE, TALKS, NDA, PROOF } from '../data/site';
 import stage from '../assets/techie-talk-stage.png';
 
 /* One entry per line: the break between them is part of the design. */
-const HEADLINE = ['I study how products', 'earn the right to exist.'];
+const HEADLINE = ['I study how good', 'products get made.'];
 
 const description =
   'Flora Liu is a hardware engineer writing about how products get designed, how they earn confidence, and how engineering decisions create value.';
@@ -84,8 +84,8 @@ const description =
 
         <div class="hero__lede">
           <p>
-            A physical product has to survive reality, earn confidence, and make commercial sense.
-            Someone has to decide when all three are true. I build the evidence that decision rests on,
+            A physical product has to work, be reliable, and meet a real market need. Someone has to
+            decide when it is ready. I build the evidence that decision rests on,
             end to end, through NPI to mass production.
           </p>
         </div>
@@ -213,11 +213,7 @@ const description =
   <section class="section shell shell--read" id="perspective">
     <div class="section-head" data-reveal>
       <div>
-        <h2>Three questions I keep answering</h2>
-        <p class="section-head__sub">
-          Most engineering writing explains methods. These pages explain decisions: harder to learn,
-          and rarely written down.
-        </p>
+        <h2>Three questions I keep asking</h2>
       </div>
     </div>
 
@@ -304,7 +300,6 @@ const description =
 
     <div class="nda">
       {NDA.body.map((para) => <p>{para}</p>)}
-      <p class="nda__closing">{NDA.closing}</p>
     </div>
   </section>
 
@@ -312,7 +307,7 @@ const description =
   <section class="section shell shell--read" id="speaking">
     <div class="section-head" data-reveal style="--reveal-duration: 1200ms">
       <div>
-        <h2>I like explaining this out loud</h2>
+        <h2>Talks</h2>
         <p class="section-head__sub">
           Engineering also means explaining a decision to people who did not run the test.
         </p>
@@ -458,6 +453,12 @@ const description =
   }
 
   /* --- typed headline --- */
+
+  /* On a phone the global h1 floor (2.25rem) lets "products" run right up
+     to the gutter; a slightly lower floor leaves it room to breathe. */
+  .typed {
+    font-size: clamp(2rem, 5.6vw, 3.5rem);
+  }
 
   .typed.is-typing .typed__ch:not(.is-on) {
     visibility: hidden;
@@ -887,12 +888,6 @@ const description =
 
   .nda {
     max-width: 60ch;
-  }
-
-  .nda__closing {
-    margin-bottom: 0;
-    font-weight: 700;
-    color: var(--ink);
   }
 
   /* --- talks --- */

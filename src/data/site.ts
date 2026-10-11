@@ -84,7 +84,7 @@ export const PILLARS = [
     href: '/designed',
     title: 'How a product gets designed',
     promise:
-      'A design is a set of decisions. Every feature should be able to answer why.',
+      'A design is a set of decisions. Every feature needs a reason.',
     question: 'How should it be designed, and why that way?',
   },
   {
@@ -92,7 +92,7 @@ export const PILLARS = [
     href: '/confidence',
     title: 'How a product earns confidence',
     promise:
-      'A pass is a data point. Confidence needs enough samples.',
+      'One pass is not enough. Confidence needs enough samples.',
     question: 'How much evidence is enough?',
   },
   {
@@ -100,7 +100,7 @@ export const PILLARS = [
     href: '/value',
     title: 'How a product creates value',
     promise:
-      'The ship date is set early. What ships with it is not.',
+      'The ship date is fixed early. Cost and risk are not.',
     question: 'If the ship date is fixed, what does engineering still decide?',
   },
 ];
@@ -109,11 +109,7 @@ export const PILLARS = [
 export const NDA = {
   kicker: 'Working under confidentiality',
   headline: 'The product can be confidential. The thinking does not have to be.',
-  body: [
-    'I cannot publish the devices, datasets or conclusions I work with. For a while that seemed like a reason to write nothing. Then I realised the reasoning was the part worth sharing anyway.',
-    'What transfers is the reasoning: how to frame uncertainty, how to design evidence worth trusting, how to recognise a failure mode that is hiding, and how to turn technical context into a recommendation somebody can act on. None of that belongs to any one employer.',
-  ],
-  closing: 'This site argues about method. The programmes stay out of it.',
+  body: ["I can't share work details, so I write about methods instead."],
 };
 
 /* Newest first, the order a résumé reads in. */
@@ -221,7 +217,7 @@ export const EXPERIENCE = [
     period: '2025–2026',
     points: [
       'Hardware qualification across the full NPI lifecycle: EVT, DVT, PVT, HVT through mass production.',
-      'Automated the coordination layer of NPI (issue tracking, status queries, reporting) so engineering time goes to judgement, not status chasing.',
+      'Automated NPI issue tracking, status checks and reporting to cut time spent on routine updates.',
       'Built a test-data platform (MySQL + dashboards) so test evidence could be queried instead of reassembled by hand.',
       'Statistical analysis for risk-based ship decisions: lifetime modelling, distribution fitting, and uncertainty quantification rather than point estimates.',
       'Applied data and AI-assisted workflows to failure-analysis problems.',
@@ -244,7 +240,7 @@ export const EXPERIENCE = [
     period: 'Sep 2023–Apr 2024',
     points: [
       'Ran vibration, shock, thermal, ingress and HALT testing; instrumented rigs with LabVIEW and DAQ.',
-      'Cross-checked physical measurements against FEA to test whether the two stories agreed, and reported honestly when they did not.',
+      'Compared physical measurements with FEA results and reported where they differed.',
       'Introduced an FEA-supported workflow so clients received engineering insight, not just a pass/fail certificate.',
     ],
   },
@@ -327,7 +323,6 @@ export const PROJECTS: {
       'Graduate homework in PyTorch: regression on analytic fluid flows with an architecture ablation, a CNN on CIFAR-10, neural style transfer (VGG19, L-BFGS) and a physics-informed network for the 1D wave equation.',
     stats: [
       { label: 'Assignments', value: '5' },
-      { label: 'Levels each', value: '3' },
     ],
     media: [
       { src: '/media/work/dl-style-transfer.mp4', alt: 'Neural style transfer, retrained: a photo of steps into the sea taking on Starry Night style, step by step.' },
@@ -341,7 +336,6 @@ export const PROJECTS: {
     summary:
       'Coursework, projects and an internship from my B.S. at NCKU: a two-robot retrieve-and-transport system, vibration control research, fan CFD at SGS, FEA, mechanism design and CAD.',
     stats: [
-      { label: 'Areas', value: '10' },
       { label: 'Years', value: '2020–2024' },
     ],
     media: [
@@ -394,7 +388,6 @@ export const PROJECTS: {
     summary:
       'Imports weather-logger and station data into MySQL and feeds an Excel dashboard: pick one month, several, or a range across the new year, and eight linked charts follow. The demo runs on synthetic data.',
     stats: [
-      { label: 'Fewer rows', value: '30×' },
       { label: 'Readings a day', value: '1,440' },
       { label: 'Linked charts', value: '8' },
     ],

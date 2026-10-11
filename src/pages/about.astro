@@ -35,8 +35,8 @@ import compass from '../assets/compass-fellowship.jpg';
            questions she cares about, each linked to its essay. -->
       <div class="intro__body">
         <p>
-          Mechanical engineering gave me the physics. Testing, product development and research taught
-          me to turn it into data, then decisions. That turned out to be the harder half.
+          Mechanical engineering taught me the physics. Testing, product development and research
+          taught me to use data to make decisions. That turned out to be the harder part.
         </p>
         <p>
           I'm interested in how a product <a href="/designed">gets designed</a>,
@@ -74,10 +74,10 @@ import compass from '../assets/compass-fellowship.jpg';
       <ol class="list-plain contents__list">
         <li><a href="#experience">Experience</a></li>
         <li><a href="#education">Education</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#certifications">Certifications &amp; training</a></li>
-        <li><a href="#outside">Outside the lab</a></li>
         <li><a href="#work">Selected work</a></li>
+        <li><a href="#certifications">Certifications &amp; training</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#outside">Outside the lab</a></li>
       </ol>
     </nav>
 
@@ -126,30 +126,64 @@ import compass from '../assets/compass-fellowship.jpg';
       </div>
     </section>
 
-    <section class="section" id="skills">
+    <section class="section" id="work">
       <div class="section-head">
         <div>
-          <h2>Skills</h2>
+          <h2>Selected work</h2>
+          <p class="section-head__sub">
+            Public repositories only.
+          </p>
         </div>
       </div>
 
-      <dl class="skills">
-        {
-          SKILLS.map((s) => (
-            <div class="skills__row">
-              <dt class="skills__area">{s.area}</dt>
-              <dd class="skills__items">
-                {s.items.map((item, i) => (
-                  <>
-                    {i > 0 && <span class="skills__sep" aria-hidden="true"> · </span>}
-                    <span class="skills__item">{item}</span>
-                  </>
-                ))}
-              </dd>
+      <!-- Same layout as "Outside the lab": text and figures on the left,
+           the repo's README images on the right. -->
+      {
+        PROJECTS.map((p) => (
+          <article class:list={['side', !p.media && 'side--solo']}>
+            <div class="side__text">
+              <div class="proj__head">
+                <h3>{p.page ? <a href={p.page}>{p.title}</a> : p.title}</h3>
+                <span class="chip">{p.kind}</span>
+              </div>
+              <p>{p.summary}</p>
+              {p.stats && (
+                <dl class="side__stats">
+                  {p.stats.map((st) => (
+                    <div>
+                      <dt>{st.label}</dt>
+                      <dd class="num">{st.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              )}
+              {p.page && (
+                <p class="side__note">
+                  <a href={p.page}>Read the project page →</a>
+                </p>
+              )}
+              <p class="side__note">
+                <a class="proj__repo" href={`${SITE.github}/${p.repo}`} target="_blank" rel="noopener">
+                  github.com/floraliu-dev/{p.repo} ↗
+                </a>
+              </p>
             </div>
-          ))
-        }
-      </dl>
+            {p.media && (
+              <div class:list={['proj__media', p.media.length >= 3 && 'proj__media--grid']}>
+                {/* Animations ship as small looping MP4s, not GIFs, and load
+                    only as they near the screen (see LoopVideo). */}
+                {p.media.map((m) =>
+                  m.src.endsWith('.mp4') ? (
+                    <LoopVideo src={m.src} alt={m.alt} />
+                  ) : (
+                    <img src={m.src} alt={m.alt} loading="lazy" decoding="async" />
+                  )
+                )}
+              </div>
+            )}
+          </article>
+        ))
+      }
     </section>
 
     <section class="section" id="certifications">
@@ -179,6 +213,32 @@ import compass from '../assets/compass-fellowship.jpg';
           </>
         ))
       }
+    </section>
+
+    <section class="section" id="skills">
+      <div class="section-head">
+        <div>
+          <h2>Skills</h2>
+        </div>
+      </div>
+
+      <dl class="skills">
+        {
+          SKILLS.map((s) => (
+            <div class="skills__row">
+              <dt class="skills__area">{s.area}</dt>
+              <dd class="skills__items">
+                {s.items.map((item, i) => (
+                  <>
+                    {i > 0 && <span class="skills__sep" aria-hidden="true"> · </span>}
+                    <span class="skills__item">{item}</span>
+                  </>
+                ))}
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
     </section>
 
     <section class="section" id="outside">
@@ -294,67 +354,6 @@ import compass from '../assets/compass-fellowship.jpg';
       <DraftNote
         needs="One honest paragraph about what you are reading, learning, or arguing about lately. This does more for a personal site than another list of tools — your 19,000-impression LinkedIn post was written in exactly this register."
       />
-    </section>
-
-    <section class="section" id="work">
-      <div class="section-head">
-        <div>
-          <h2>Selected work</h2>
-          <p class="section-head__sub">
-            Public repositories. Work done at Amazon is not represented here and will not be. What I
-            can share about it lives in the written pages instead.
-          </p>
-        </div>
-      </div>
-
-      <!-- Same layout as "Outside the lab": text and figures on the left,
-           the repo's README images on the right. -->
-      {
-        PROJECTS.map((p) => (
-          <article class:list={['side', !p.media && 'side--solo']}>
-            <div class="side__text">
-              <div class="proj__head">
-                <h3>{p.page ? <a href={p.page}>{p.title}</a> : p.title}</h3>
-                <span class="chip">{p.kind}</span>
-              </div>
-              <p>{p.summary}</p>
-              {p.stats && (
-                <dl class="side__stats">
-                  {p.stats.map((st) => (
-                    <div>
-                      <dt>{st.label}</dt>
-                      <dd class="num">{st.value}</dd>
-                    </div>
-                  ))}
-                </dl>
-              )}
-              {p.page && (
-                <p class="side__note">
-                  <a href={p.page}>Read the project page →</a>
-                </p>
-              )}
-              <p class="side__note">
-                <a class="proj__repo" href={`${SITE.github}/${p.repo}`} target="_blank" rel="noopener">
-                  github.com/floraliu-dev/{p.repo} ↗
-                </a>
-              </p>
-            </div>
-            {p.media && (
-              <div class:list={['proj__media', p.media.length >= 3 && 'proj__media--grid']}>
-                {/* Animations ship as small looping MP4s, not GIFs, and load
-                    only as they near the screen (see LoopVideo). */}
-                {p.media.map((m) =>
-                  m.src.endsWith('.mp4') ? (
-                    <LoopVideo src={m.src} alt={m.alt} />
-                  ) : (
-                    <img src={m.src} alt={m.alt} loading="lazy" decoding="async" />
-                  )
-                )}
-              </div>
-            )}
-          </article>
-        ))
-      }
     </section>
   </div>
 </Base>
