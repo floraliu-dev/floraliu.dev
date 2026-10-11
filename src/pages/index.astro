@@ -209,38 +209,6 @@ const description =
     </script>
   </section>
 
-  <!-- ============ the argument ============ -->
-  <section class="section shell shell--read" id="perspective">
-    <div class="section-head" data-reveal>
-      <div>
-        <h2>Three questions I keep asking</h2>
-      </div>
-    </div>
-
-    <!-- Three parallel questions, scanned side by side: they break out to the
-         full page width and share the vantage row's three-column grid, so the
-         two rows below the hero line up. -->
-    <ul class="list-plain pillars breakout">
-      {
-        PILLARS.map((p, i) => (
-          <li class="pillar" data-reveal style={`--reveal-delay: ${150 + i * 120}ms`}>
-            <a class="pillar__link" href={p.href}>
-              <span class="num pillar__no" aria-hidden="true">{p.no}</span>
-              <div class="pillar__body">
-                <h3 class="pillar__title">
-                  <span class="pillar__titletext">{p.title}</span>
-                  <span class="pillar__arrow" aria-hidden="true">→</span>
-                </h3>
-                <p class="pillar__q">{p.question}</p>
-                <p class="pillar__promise">{p.promise}</p>
-              </div>
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </section>
-
   <!-- ============ why I can say this ============ -->
   <section class="section shell shell--read" id="vantage">
     <div class="section-head">
@@ -304,6 +272,32 @@ const description =
     <div class="nda">
       {NDA.body.map((para) => <p>{para}</p>)}
     </div>
+
+    <!-- "So I write about methods instead" leads straight into the methods:
+         the three essays sit under it rather than in a section of their own. -->
+    <!-- Three parallel questions, scanned side by side: they break out to the
+         full page width and share the vantage row's three-column grid, so the
+         two rows below the hero line up. -->
+    <h2 class="visually-hidden">Three essays on method</h2>
+    <ul class="list-plain pillars breakout" id="perspective">
+      {
+        PILLARS.map((p, i) => (
+          <li class="pillar" data-reveal style={`--reveal-delay: ${150 + i * 120}ms`}>
+            <a class="pillar__link" href={p.href}>
+              <span class="num pillar__no" aria-hidden="true">{p.no}</span>
+              <div class="pillar__body">
+                <h3 class="pillar__title">
+                  <span class="pillar__titletext">{p.title}</span>
+                  <span class="pillar__arrow" aria-hidden="true">→</span>
+                </h3>
+                <p class="pillar__q">{p.question}</p>
+                <p class="pillar__promise">{p.promise}</p>
+              </div>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
   </section>
 
   <!-- ============ speaking ============ -->
@@ -894,6 +888,10 @@ const description =
 
   .nda {
     max-width: 60ch;
+  }
+
+  .nda + .visually-hidden + .pillars {
+    margin-top: clamp(2rem, 5vw, 3rem);
   }
 
   /* --- talks --- */
