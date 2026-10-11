@@ -116,18 +116,16 @@ export const NDA = {
   closing: 'This site argues about method. The programmes stay out of it.',
 };
 
-/* Newest first, the order a résumé reads in; the home heading above the
-   row (Decided / Built / Tested) follows the same order. */
+/* Newest first, the order a résumé reads in. */
 export const VANTAGE = [
   {
     no: '01',
     org: 'Amazon',
     logo: logoAmazon,
     kind: 'Engineer · Global consumer brand',
-    verb: 'Build the case for readiness',
+    verb: 'Work across borders and functions',
     period: '2025–2026',
-    learned:
-      'Across EVT, DVT, PVT, HVT and mass production, the question stops being "did it pass" and becomes "do we ship". Evidence, statistics and business context arrive at the same table. My job is to make the evidence strong enough to answer that question.',
+    learned: 'From Taiwan, with global teams and suppliers abroad.',
   },
   {
     no: '02',
@@ -137,7 +135,7 @@ export const VANTAGE = [
     verb: 'Model the design',
     period: '2024',
     learned:
-      'Simulation and automation showed me how early design choices set the cost of every later iteration. Much of engineering is removing friction between tools.',
+      'Early design choices set the cost of every later iteration.',
   },
   {
     no: '03',
@@ -147,7 +145,7 @@ export const VANTAGE = [
     verb: 'Test to failure',
     period: '2023–2024',
     learned:
-      'Evidence is only as good as the setup that produced it. I learned where a fixture can lie to you, and what a defensible conclusion requires.',
+      'Evidence is only as good as the setup that produced it.',
   },
 ];
 

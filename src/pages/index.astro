@@ -85,12 +85,8 @@ const description =
         <div class="hero__lede">
           <p>
             A physical product has to survive reality, earn confidence, and make commercial sense.
-            Someone has to decide when all three are true. My work is building the evidence that
-            decision rests on.
-          </p>
-          <p>
-            I have worked toward that decision from three seats on the same supply chain: as an intern at
-            a test lab and a system company, and now as an engineer at a global brand.
+            Someone has to decide when all three are true. I build the evidence that decision rests on,
+            end to end, through NPI to mass production.
           </p>
         </div>
 
@@ -253,23 +249,15 @@ const description =
   <section class="section shell shell--read" id="vantage">
     <div class="section-head">
       <div>
-        <!-- One sentence per line: three parallel beats read as a rhythm, and
-             they arrive one beat at a time when the section scrolls in. -->
+        <!-- No count in the heading: each new role adds a card, not a rewrite. -->
         <h2 class="vantage__heading" data-reveal="lines">
-          <span class="vantage__line">Decided by one company.</span><br />
-          <span class="vantage__line">Built by another.</span><br />
-          <span class="vantage__line">Tested by a third.</span>
+          <span class="vantage__line">Every role, a new angle on the product.</span>
         </h2>
-        <p class="section-head__sub">
-          The same product looks different from each seat on a supply chain. I have sat in all three,
-          and the disagreements between them are where the real engineering happens.
-        </p>
       </div>
     </div>
 
-    <!-- Each company arrives with its own sentence above: decided (Amazon),
-         built (Delta), tested (SGS). Same 800ms step and 1300ms fade as the
-         heading's lines, so each pair starts and lands together. -->
+    <!-- Cards arrive one after another on the same 800ms step and 1300ms
+         fade as the heading. -->
     <div class="vantage breakout">
       {
         VANTAGE.map((v, i) => (
@@ -286,7 +274,6 @@ const description =
               <Image class="logo" src={v.logo} alt="" width={96} height={96} loading="lazy" />
               <div>
                 <h3 class="vantage__org">{v.org}</h3>
-                <p class="vantage__kind">{v.kind}</p>
               </div>
             </header>
             <p class="vantage__verb">{v.verb}</p>
@@ -769,20 +756,12 @@ const description =
     text-wrap: wrap;
   }
 
-  /* Three beats, 800ms apart. The fade plays for everyone; the short rise
-     is movement, so it is kept for visitors who have not asked for less
-     (see the motion policy in global.css). */
+  /* The fade plays for everyone; the short rise is movement, so it is kept
+     for visitors who have not asked for less (see the motion policy in
+     global.css). */
   .vantage__line {
     display: inline-block;
     transition: opacity 1300ms ease;
-  }
-
-  .vantage__line:nth-of-type(2) {
-    transition-delay: 800ms;
-  }
-
-  .vantage__line:nth-of-type(3) {
-    transition-delay: 1600ms;
   }
 
   .vantage__heading.is-pending .vantage__line {
@@ -810,6 +789,7 @@ const description =
 
   .vantage__card {
     padding: 1.75rem 1.75rem 0.5rem 0;
+    container-type: inline-size;
   }
 
   .vantage__card + .vantage__card {
@@ -834,8 +814,12 @@ const description =
     color: var(--ink-muted);
   }
 
+  /* One line at every width: the longest verb ("Work across borders and
+     functions") scales down with its card instead of wrapping. */
   .vantage__verb {
     margin: 0 0 0.6rem;
+    font-size: clamp(0.8rem, 5.9cqi, 1.125rem);
+    white-space: nowrap;
     font-weight: 700;
     color: var(--accent);
   }
