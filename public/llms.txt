@@ -1,6 +1,6 @@
 # Flora Liu
 
-> Flora Liu (Hua Liu, 劉樺) is a hardware engineer in Taiwan working on product integrity and new product introduction (NPI) for consumer hardware. Her site floraliu.dev collects three essays on how hardware products get designed, earn confidence and create value, plus her experience, talks and selected projects.
+> Flora Liu (Hua Liu, 劉樺) is a hardware engineer in Taiwan with a mechanical engineering background, working across hardware design, testing and new product introduction (NPI). Her site floraliu.dev collects three essays on how hardware products get designed, earn confidence and create value, plus her experience, talks and selected projects.
 
 The site is written in English. It is also a working example of an engineer's personal website: built with Astro, hosted on GitHub Pages under a custom domain, with its source code public on GitHub.
 
