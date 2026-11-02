@@ -36,7 +36,7 @@ const repo = `${SITE.github}/piezo-motor-visual-servo`;
       <p>
         My master's thesis. The motor is a 9 × 6 mm plate that walks on traveling waves. Left
         alone it drifts, and any sensor mounted on it would add weight. So a camera watches it
-        instead, and a PID loop corrects it 120 times a second.
+        instead, and a PID loop corrects it about 24 times a second.
       </p>
       <div class="proj-videos">
         <figure>
@@ -130,7 +130,7 @@ const repo = `${SITE.github}/piezo-motor-visual-servo`;
         no="4"
         narrow
         src={position}
-        alt="Two trajectories from the same start. Without control the path wanders left, ending 10.2° off; with control it stays nearly straight, 2.6° off."
+        alt="Two trajectories from the same start. Without control the path wanders left, averaging 10.2° off course; with control it stays nearly straight, averaging 2.6°."
         caption="One straight run with and without heading control: 10.2° of drift down to 2.6°."
       />
       <p>

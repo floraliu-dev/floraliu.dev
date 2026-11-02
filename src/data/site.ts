@@ -468,7 +468,7 @@ export const TALKS: Talk[] = [
     year: '2026',
     role: 'Oral presentation',
     summary:
-      'Presented my master’s research, first author: a 9 × 6 × 0.5 mm ultrasonic piezoelectric plate motor with vision-based closed-loop control. Feedback cut orientation drift from 10.2° to 2.6°, reduced straight-line error by 82%, and let the motor carry nearly five times its own weight.',
+      'Presented my master’s research, first author: a 9 × 6 × 0.5 mm ultrasonic piezoelectric plate motor with vision-based closed-loop control. Feedback cut orientation drift from 10.2° to 2.6° and let the motor carry nearly five times its own weight.',
     link: 'https://www.linkedin.com/feed/update/urn:li:activity:7403954040453451777/',
     photo: {
       src: spieTalk,
