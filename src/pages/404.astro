@@ -5,6 +5,21 @@ import Base from '../layouts/Base.astro';
 <!-- GitHub Pages serves this for every missing address, so it must not be
      indexed or claim a canonical URL of its own. -->
 <Base title="Not found" description="That page does not exist." noindex>
+  <!-- GitHub Pages matches paths exactly, so a link that differs from a real
+       page only by a trailing slash or by capitals (/about/, /About) lands
+       here. Send it on to the site's own form of the address: first without
+       the trailing slash, then in lower case. Each step is a fixed point, so
+       an address that is still missing after both shows this page instead
+       of looping. -->
+  <script is:inline>
+    (() => {
+      const path = location.pathname;
+      const trimmed = path.replace(/\/+$/, '') || '/';
+      const next = trimmed !== path ? trimmed : path.toLowerCase();
+      if (next !== path) location.replace(next + location.search + location.hash);
+    })();
+  </script>
+
   <div class="shell nf">
     <p class="label">Error 404</p>
     <h1>No such page</h1>

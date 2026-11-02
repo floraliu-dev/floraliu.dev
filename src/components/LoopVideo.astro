@@ -5,7 +5,13 @@
  * page with several clips does not fetch them all on load. Until then the
  * poster shows: the clip's first frame, a sibling .jpg next to the .mp4
  * (generated with ffmpeg alongside the clip).
+ *
+ * `width` and `height` only set the box's shape before the poster arrives
+ * (CSS sizes it). Left out, they are read from the poster itself, so the
+ * page never jumps when the poster loads.
  */
+import { publicImageSize } from '../lib/media-size';
+
 interface Props {
   src: string;
   alt: string;
@@ -13,16 +19,21 @@ interface Props {
   height?: number;
 }
 
-const { src, alt, width, height } = Astro.props;
+const { src, alt } = Astro.props;
+const poster = src.replace(/\.mp4$/, '.jpg');
+const size =
+  Astro.props.width && Astro.props.height
+    ? { width: Astro.props.width, height: Astro.props.height }
+    : publicImageSize(poster);
 ---
 
 <video
   class="loop-video"
   data-src={src}
-  poster={src.replace(/\.mp4$/, '.jpg')}
+  poster={poster}
   aria-label={alt}
-  width={width}
-  height={height}
+  width={size?.width}
+  height={size?.height}
   muted
   loop
   playsinline

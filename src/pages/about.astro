@@ -4,6 +4,7 @@ import DraftNote from '../components/DraftNote.astro';
 import Entry from '../components/Entry.astro';
 import LoopVideo from '../components/LoopVideo.astro';
 import { Image } from 'astro:assets';
+import { publicImageSize } from '../lib/media-size';
 import { SITE, EXPERIENCE, EDUCATION, SKILLS, PROJECTS, CERTS } from '../data/site';
 import headshot from '../assets/headshot.jpg';
 import tsmcBooth from '../assets/tsmc-ambassador-booth.jpg';
@@ -65,6 +66,7 @@ import compass from '../assets/compass-fellowship.jpg';
           widths={[320, 640]}
           sizes="(max-width: 800px) 60vw, 20rem"
           loading="eager"
+          fetchpriority="high"
         />
       </div>
     </section>
@@ -183,7 +185,13 @@ import compass from '../assets/compass-fellowship.jpg';
                   m.src.endsWith('.mp4') ? (
                     <LoopVideo src={m.src} alt={m.alt} />
                   ) : (
-                    <img src={m.src} alt={m.alt} loading="lazy" decoding="async" />
+                    <img
+                      src={m.src}
+                      alt={m.alt}
+                      loading="lazy"
+                      decoding="async"
+                      {...(publicImageSize(m.src) ?? {})}
+                    />
                   )
                 )}
               </div>
