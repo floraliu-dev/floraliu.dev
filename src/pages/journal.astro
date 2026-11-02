@@ -27,7 +27,8 @@ const day = (iso: string) =>
       <p class="journal__note">Written in Mandarin on Vocus.</p>
     </header>
 
-    <a class="salon" href={SITE.vocusSalon}>
+    {/* hreflang: the linked pages are in Chinese, unlike this one. */}
+    <a class="salon" href={SITE.vocusSalon} hreflang="zh-Hant">
       <Image class="salon__avatar" src={headshot} alt="" width={160} height={160} fit="cover" />
       <span class="salon__body">
         <span class="salon__name" lang="zh-Hant">工程師的日常筆記</span>
@@ -42,7 +43,7 @@ const day = (iso: string) =>
         <ul class="list-plain entries">
           {posts.map((post) => (
             <li>
-              <a class="entry" href={post.url}>
+              <a class="entry" href={post.url} hreflang="zh-Hant">
                 {post.cover && (
                   <Image class="entry__cover" src={post.cover} alt="" inferSize width={400} height={400} fit="cover" position="center" format="webp" quality={80} />
                 )}

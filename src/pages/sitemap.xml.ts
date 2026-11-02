@@ -10,8 +10,20 @@
 import type { APIRoute } from 'astro';
 import { canonicalUrl } from '../lib/url';
 import { lastModified } from '../lib/lastmod';
+import journal from '../data/journal.json';
 
 const SITE_DATA = 'src/data/site.ts';
+
+/* /journal also changes with no commit at all: the daily build lists a new
+   vocus post on its own (scripts/fetch-journal.mjs). Its date is the newer
+   of its last commit and its newest post. */
+const NEWEST_POST = journal
+  .map((post) => post.date.slice(0, 10))
+  .sort()
+  .at(-1);
+const EXTRA_DATES: Record<string, string | undefined> = {
+  '/journal': NEWEST_POST,
+};
 
 const STATIC_PAGES: Record<string, string[]> = {
   '/': ['src/pages/index.astro', SITE_DATA],
@@ -34,7 +46,8 @@ interface Entry {
 export const GET: APIRoute = async ({ site }) => {
   const entries: Entry[] = Object.entries(STATIC_PAGES).map(([path, files]) => ({
     path,
-    lastmod: lastModified(files),
+    // ISO dates compare correctly as strings.
+    lastmod: [lastModified(files), EXTRA_DATES[path]].filter(Boolean).sort().at(-1),
   }));
 
   const urls = entries

@@ -55,17 +55,50 @@ const social = await getImage({
   quality: 90,
 });
 const socialUrl = new URL(social.src, Astro.site).href;
+const socialAlt =
+  socialOverride?.alt ??
+  'Flora Liu. Design · Testing · Decisions. floraliu.dev. Drawn as an engineering sheet: an exploded isometric view of her piezoelectric plate motor and a Weibull reliability plot.';
 const canonical = canonicalUrl(path, Astro.site!);
+const siteUrl = new URL('/', Astro.site).href;
 
-/* Structured data on the home page: tells search engines this site is about
+/* Structured data describing her: tells search engines this site is about
    one person and ties her names together. "Hua Liu" is the name on her
    published paper, "Hua Flora Liu" on her résumé and "劉樺" on her Chinese
-   CV, so listing them lets a search for any of them land here. */
-let personJsonLd: string | undefined;
-if (path === '/') {
+   CV, so listing them lets a search for any of them land here.
+   Built in one place and printed in full on both pages about her, home and
+   About. Google reads each page on its own and does not follow an @id to
+   another page, so a short reference on About would leave its profile page
+   with a name and nothing else; one source keeps the two from drifting. */
+async function person() {
   const portrait = await getImage({ src: headshot, width: 600, format: 'jpeg' });
-  const siteUrl = new URL('/', Astro.site).href;
-  personJsonLd = JSON.stringify({
+  return {
+    '@type': 'Person',
+    '@id': `${siteUrl}#person`,
+    name: SITE.name,
+    alternateName: ['Hua Liu', 'Hua Flora Liu', '劉樺'],
+    url: siteUrl,
+    image: new URL(portrait.src, Astro.site).href,
+    jobTitle: SITE.role,
+    alumniOf: EDUCATION.map((e) => ({ '@type': 'CollegeOrUniversity', name: e.school })),
+    email: `mailto:${SITE.email}`,
+    address: { '@type': 'PostalAddress', addressCountry: 'TW' },
+    knowsAbout: [
+      'Hardware engineering',
+      'New product introduction (NPI)',
+      'Product development',
+      'Hardware qualification and testing',
+      'Finite element analysis',
+      'Test automation',
+      'AI-assisted engineering workflows',
+      'Reliability engineering',
+    ],
+    sameAs: [SITE.linkedin, SITE.github, SITE.vocus, SITE.cake],
+  };
+}
+
+let jsonLd: string | undefined;
+if (path === '/') {
+  jsonLd = JSON.stringify({
     '@context': 'https://schema.org',
     '@graph': [
       {
@@ -76,52 +109,30 @@ if (path === '/') {
         inLanguage: 'en',
         publisher: { '@id': `${siteUrl}#person` },
       },
-      {
-        '@type': 'Person',
-        '@id': `${siteUrl}#person`,
-        name: SITE.name,
-        alternateName: ['Hua Liu', 'Hua Flora Liu', '劉樺'],
-        url: siteUrl,
-        image: new URL(portrait.src, Astro.site).href,
-        jobTitle: SITE.role,
-        alumniOf: EDUCATION.map((e) => ({ '@type': 'CollegeOrUniversity', name: e.school })),
-        email: `mailto:${SITE.email}`,
-        address: { '@type': 'PostalAddress', addressCountry: 'TW' },
-        knowsAbout: [
-          'Hardware engineering',
-          'New product introduction (NPI)',
-          'Product development',
-          'Hardware qualification and testing',
-          'Finite element analysis',
-          'Test automation',
-          'AI-assisted engineering workflows',
-          'Reliability engineering',
-        ],
-        sameAs: [SITE.linkedin, SITE.github, SITE.vocus, SITE.cake],
-      },
+      await person(),
     ],
   });
 }
 
 /* About is the page that describes her, so it is marked as her profile
-   page. Its subject points at the Person defined on the home page by @id,
-   which keeps one full description of her rather than two that can drift. */
+   page, with her as its subject. Dates come from git over the same files
+   as the sitemap's lastmod for /about, so the two agree. */
 if (path === '/about') {
-  const siteUrl = new URL('/', Astro.site).href;
-  personJsonLd = JSON.stringify({
+  jsonLd = JSON.stringify({
     '@context': 'https://schema.org',
     '@type': 'ProfilePage',
     url: canonical,
-    mainEntity: { '@type': 'Person', '@id': `${siteUrl}#person`, name: SITE.name, url: siteUrl },
+    dateCreated: firstCommitted(['src/pages/about.astro']),
+    dateModified: lastModified(['src/pages/about.astro', 'src/data/site.ts']),
+    mainEntity: await person(),
   });
 }
 
 /* Essays and project pages are articles written by the Person on the home
    page. Dates come from git, like the sitemap's lastmod, so the two agree. */
 if (article && !noindex) {
-  const siteUrl = new URL('/', Astro.site).href;
   const source = [`src/pages${path}.astro`];
-  personJsonLd = JSON.stringify({
+  jsonLd = JSON.stringify({
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: title,
@@ -145,13 +156,29 @@ if (article && !noindex) {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
-    {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
+    {
+      noindex ? (
+        <meta name="robots" content="noindex" />
+      ) : (
+        <>
+          {/* Lets search results show a large preview of the page's
+              images, not only a thumbnail. */}
+          <meta name="robots" content="max-image-preview:large" />
+          <link rel="canonical" href={canonical} />
+        </>
+      )
+    }
 
-    <!-- Declaring an icon is also what stops the browser probing /favicon.ico
-         and logging a 404. SVG only: every browser that supports SVG icons
-         prefers them, and the ones that do not simply show no icon rather than
-         a broken one. -->
+    <!-- The SVG is the icon every current browser uses, and it follows the
+         visitor's colour scheme. The two files beside it are fallbacks on a
+         white tile, so they stay visible on any background: favicon.ico for
+         clients that ask for it by name (feed readers, some crawlers,
+         older Safari), declared with a size so Chrome still prefers the
+         SVG; apple-touch-icon.png (180×180, opaque) for the iOS home screen,
+         which turns transparency black. -->
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
     <meta property="og:type" content={article ? 'article' : 'website'} />
     <meta property="og:site_name" content={SITE.name} />
@@ -161,18 +188,15 @@ if (article && !noindex) {
     <meta property="og:image" content={socialUrl} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta
-      property="og:image:alt"
-      content={socialOverride?.alt ??
-        'Flora Liu. Design · Testing · Decisions. floraliu.dev. Drawn as an engineering sheet: an exploded isometric view of her piezoelectric plate motor and a Weibull reliability plot.'}
-    />
+    <meta property="og:image:alt" content={socialAlt} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={socialUrl} />
+    <meta name="twitter:image:alt" content={socialAlt} />
 
     <link rel="sitemap" href="/sitemap.xml" />
-    {personJsonLd && <script is:inline type="application/ld+json" set:html={personJsonLd} />}
+    {jsonLd && <script is:inline type="application/ld+json" set:html={jsonLd} />}
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
