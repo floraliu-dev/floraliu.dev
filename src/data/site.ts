@@ -34,6 +34,7 @@ export const SITE = {
   vocusSalon: 'https://vocus.cc/salon/floraliu',
   cake: 'https://www.cake.me/me/liu092111',
   orcid: 'https://orcid.org/0009-0003-0626-7208',
+  scholar: 'https://scholar.google.com/citations?user=5gdVFtAAAAAJ',
   /* One-page résumé in public/. Replace the file to update it; keep the
      name, since the link may already be saved in bookmarks and emails.
      Strip phone and home address before publishing a new version. */
