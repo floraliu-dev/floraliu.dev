@@ -33,6 +33,7 @@ export const SITE = {
   /* The salon "工程師的日常筆記"; /journal lists its posts. */
   vocusSalon: 'https://vocus.cc/salon/floraliu',
   cake: 'https://www.cake.me/me/liu092111',
+  orcid: 'https://orcid.org/0009-0003-0626-7208',
   /* One-page résumé in public/. Replace the file to update it; keep the
      name, since the link may already be saved in bookmarks and emails.
      Strip phone and home address before publishing a new version. */
