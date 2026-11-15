@@ -123,8 +123,8 @@ if (path === '/about') {
     '@context': 'https://schema.org',
     '@type': 'ProfilePage',
     url: canonical,
-    dateCreated: firstCommitted(['src/pages/about.astro']),
-    dateModified: lastModified(['src/pages/about.astro', 'src/data/site.ts']),
+    dateCreated: firstCommitted(['src/pages/about.astro'], true),
+    dateModified: lastModified(['src/pages/about.astro', 'src/data/site.ts'], true),
     mainEntity: await person(),
   });
 }
@@ -142,8 +142,8 @@ if (article && !noindex) {
     mainEntityOfPage: canonical,
     image: socialUrl,
     inLanguage: htmlLang,
-    datePublished: firstCommitted(source),
-    dateModified: lastModified(source),
+    datePublished: firstCommitted(source, true),
+    dateModified: lastModified(source, true),
     author: { '@type': 'Person', '@id': `${siteUrl}#person`, name: SITE.name, url: siteUrl },
     isPartOf: { '@id': `${siteUrl}#website` },
   });
