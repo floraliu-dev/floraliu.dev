@@ -7,10 +7,16 @@
    outside a repository, it returns undefined and the sitemap omits the tag. */
 import { execFileSync } from 'node:child_process';
 
-/** ISO date (YYYY-MM-DD) of the newest commit touching any of `files`. */
-export function lastModified(files: string[]): string | undefined {
+/* Sitemaps take a plain date, but Google's structured-data validator rejects a
+   bare date in schema.org dateCreated/dateModified/datePublished and asks for
+   a full datetime with a timezone. `withTime` returns strict ISO 8601
+   (2026-11-02T21:04:10+08:00) for JSON-LD; the default stays YYYY-MM-DD. */
+const fmt = (withTime: boolean) => (withTime ? '--format=%cI' : '--format=%cs');
+
+/** ISO date (YYYY-MM-DD, or full datetime with `withTime`) of the newest commit touching any of `files`. */
+export function lastModified(files: string[], withTime = false): string | undefined {
   try {
-    const out = execFileSync('git', ['log', '-1', '--format=%cs', '--', ...files], {
+    const out = execFileSync('git', ['log', '-1', fmt(withTime), '--', ...files], {
       encoding: 'utf8',
       stdio: ['ignore', 'pipe', 'ignore'],
     }).trim();
@@ -20,10 +26,10 @@ export function lastModified(files: string[]): string | undefined {
   }
 }
 
-/** ISO date (YYYY-MM-DD) of the oldest commit touching any of `files`. */
-export function firstCommitted(files: string[]): string | undefined {
+/** ISO date (YYYY-MM-DD, or full datetime with `withTime`) of the oldest commit touching any of `files`. */
+export function firstCommitted(files: string[], withTime = false): string | undefined {
   try {
-    const out = execFileSync('git', ['log', '--reverse', '--format=%cs', '--', ...files], {
+    const out = execFileSync('git', ['log', '--reverse', fmt(withTime), '--', ...files], {
       encoding: 'utf8',
       stdio: ['ignore', 'pipe', 'ignore'],
     });
