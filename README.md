@@ -32,23 +32,14 @@ polling file watcher automatically. Set `ASTRO_POLL=1` or `ASTRO_POLL=0` to over
 
 ## Use this as a template
 
-This repo is set up as a GitHub template: a personal website for an engineer, built with
-Astro and hosted free on GitHub Pages with a custom domain. To start your own:
+A clean copy of this codebase, with every piece of my content replaced by placeholders, is at
+[floraliu-dev/engineer-site-template](https://github.com/floraliu-dev/engineer-site-template).
+Click **Use this template** there to start your own engineer's personal website on Astro and
+GitHub Pages. It keeps the SEO setup: per-page titles and descriptions, `seoTitle`, Open Graph
+cards, a git-dated sitemap, schema.org JSON-LD and `llms.txt`.
 
-1. Click **Use this template** on GitHub and create a new repository.
-2. Replace the copy and facts in `src/data/site.ts`, then the pages in `src/pages/`.
-3. Delete my essays, projects, images in `public/media/` and `public/Hua-Flora-Liu-Resume.pdf`.
-4. Set `site` in `astro.config.mjs` to your domain, and update `public/llms.txt` and
-   `public/robots.txt`.
-5. In your repo's Settings → Pages, choose GitHub Actions as the source and add your
-   custom domain. The workflow in `.github/workflows/deploy.yml` builds and deploys every push.
-
-What you get without extra work: per-page title, description and canonical URL, Open Graph
-images, a sitemap with real git-based `lastmod`, schema.org JSON-LD (Person, ProfilePage,
-Article), `llms.txt` for AI search, and a link check that fails the deploy on a broken link.
-
-The code is MIT licensed. The writing, figures, photos and résumé are mine and are not
-covered by that license; please replace them rather than reuse them.
+The code in this repository is MIT licensed. The writing, figures, photos and résumé are mine
+and are not covered by that license.
 
 ## Layout
 
