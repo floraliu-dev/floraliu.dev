@@ -28,4 +28,5 @@ The site is written in English. It is also a working example of an engineer's pe
 - [LinkedIn](https://www.linkedin.com/in/flora-liu-b8a905236/)
 - [GitHub](https://github.com/floraliu-dev)
 - [Site source code](https://github.com/floraliu-dev/floraliu.dev)
+- [Engineer site template](https://github.com/floraliu-dev/engineer-site-template): this site's code as a reusable Astro + GitHub Pages template, content replaced by placeholders
 - [方格子 vocus (Chinese writing)](https://vocus.cc/user/6ab8ce2f5396f334ab9587ed)
