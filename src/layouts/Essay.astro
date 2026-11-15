@@ -6,6 +6,12 @@ interface Props {
   /** The essay's number, 01–03. Omitted on project pages, which reuse this layout. */
   docNo?: string;
   title: string;
+  /**
+   * Search-facing title for <title>, Open Graph and search results, when it
+   * should lead with the words people search for. The visible heading keeps
+   * `title`. Falls back to `title`.
+   */
+  seoTitle?: string;
   description: string;
   /**
    * One-sentence thesis shown large under the title. Defaults to this essay's
@@ -24,7 +30,7 @@ interface Props {
   refs?: { text: string; href?: string }[];
 }
 
-const { docNo, title, description, thesis, next: nextOverride, social, refs } = Astro.props;
+const { docNo, title, seoTitle, description, thesis, next: nextOverride, social, refs } = Astro.props;
 
 // The essays read in order. The last one hands the reader to the person who
 // wrote them, rather than looping back to the first essay.
@@ -43,7 +49,7 @@ const next =
 const thesisText = thesis ?? PILLARS[here]?.promise ?? '';
 ---
 
-<Base title={title} description={description} docNo={docNo} social={social} article>
+<Base title={title} seoTitle={seoTitle} description={description} docNo={docNo} social={social} article>
   <article class="essay shell shell--read">
     <header class="essay__head">
       <h1 class="page-title">{title}</h1>

@@ -11,6 +11,12 @@ import socialSource from '../assets/og-card.png';
 
 interface Props {
   title: string;
+  /**
+   * Search-facing title for <title>, Open Graph and search results, when it
+   * should lead with the words people search for. The visible heading keeps
+   * `title`. Falls back to `title`.
+   */
+  seoTitle?: string;
   description: string;
   /** Section number shown in the page masthead, e.g. "02". Omit on the homepage. */
   docNo?: string;
@@ -34,13 +40,13 @@ interface Props {
   article?: boolean;
 }
 
-const { title, description, docNo, lang = 'en', noindex = false, social: socialOverride, article = false } = Astro.props;
+const { title, seoTitle, description, docNo, lang = 'en', noindex = false, social: socialOverride, article = false } = Astro.props;
 const htmlLang = lang === 'zh' ? 'zh-Hant' : 'en';
 const path = routePath(Astro.url.pathname);
 const nav = NAV;
 const essayNav = nav.filter((item) => item.essay);
 const inEssay = essayNav.some((item) => item.href === path);
-const fullTitle = path === '/' ? `${SITE.name} — ${SITE.role}` : `${title} · ${SITE.name}`;
+const fullTitle = path === '/' ? `${SITE.name} — ${SITE.role}` : `${seoTitle ?? title} · ${SITE.name}`;
 
 // Link previews need a real, absolutely-addressed image; declaring a large
 // summary card without one leaves LinkedIn and Slack with a blank block.
